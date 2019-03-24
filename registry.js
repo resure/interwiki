@@ -3,6 +3,9 @@
 const {sites} = require('./config');
 const logToClickHouse = require('scpdb-ch-logger');
 const WikidotKit = require('wikidot-kit');
+const fs = require('fs');
+
+const cacheFilePath = process.env.INTERWIKI_FILE_CACHE_PATH;
 
 if (!process.env.WIKIDOT_API_TOKEN) {
     throw new Error('No WIKIDOT_API_TOKEN found, exiting');
@@ -13,6 +16,11 @@ const wk = new WikidotKit({
 });
 
 let pages = {};
+if (cacheFilePath) {
+    try {
+        pages = JSON.parse(fs.readFileSync(cacheFilePath));
+    } catch {}
+}
 
 async function updatePagesRegistry() {
     try {
@@ -42,6 +50,12 @@ async function updatePagesRegistry() {
                 }
             });
         });
+
+        if (cacheFilePath) {
+            try {
+                fs.writeFileSync(cacheFilePath, JSON.stringify(pages));
+            } catch {}
+        }
 
         console.log('Page lists updated');
         logToClickHouse({
