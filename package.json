@@ -23,7 +23,7 @@
     "dotenv": "^7.0.0",
     "micro": "^9.3.3",
     "micro-query": "^0.3.0",
-    "scpdb-ch-logger": "^0.3.0",
+    "scpdb-ch-logger": "^0.3.1",
     "wikidot-kit": "^0.7.0"
   },
   "devDependencies": {
