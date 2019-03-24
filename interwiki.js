@@ -17,8 +17,6 @@ module.exports = {
         const list = getWikiListByPageName(preparedPageName)
             .filter(pageWiki => pageWiki !== wiki);
 
-        console.log('list', list);
-
         return renderTemplate(list, lang, preparedPageName);
     }
 };
