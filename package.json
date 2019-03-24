@@ -1,0 +1,32 @@
+{
+  "name": "scpdb-interwiki",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "micro",
+    "dev": "micro-dev",
+    "inspect": "node --inspect node_modules/.bin/micro-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/scpdb/interwiki.git"
+  },
+  "author": "Gadzhi Gadzhiev <resure@yandex.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scpdb/interwiki/issues"
+  },
+  "homepage": "https://github.com/scpdb/interwiki#readme",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "micro": "^9.3.3",
+    "micro-query": "^0.3.0",
+    "scpdb-ch-logger": "^0.3.0",
+    "wikidot-kit": "^0.7.0"
+  },
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  }
+}
