@@ -11,7 +11,7 @@ init();
 
 module.exports = (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const ua = req.headers['user-agent'] || '';
+    const client = req.headers['user-agent'] || '';
 
     const params = query(req);
     const wiki = params.wiki || 'scp-wiki';
@@ -22,12 +22,12 @@ module.exports = (req, res) => {
         return '';
     }
 
-    const message = `request wiki=${wiki} lang=${lang} page=${page}`;
+    const message = `wiki=${wiki} lang=${lang} page=${page}`;
     logToClickHouse({
         type: 'request',
         message,
         addr: ip,
-        ua
+        client
     });
     console.log(message);
 

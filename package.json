@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "micro",
+    "start": "micro -l tcp://127.0.0.1:3001",
     "dev": "micro-dev",
     "inspect": "node --inspect node_modules/.bin/micro-dev"
   },
@@ -23,7 +23,7 @@
     "dotenv": "^7.0.0",
     "micro": "^9.3.3",
     "micro-query": "^0.3.0",
-    "scpdb-ch-logger": "^0.3.1",
+    "scpdb-ch-logger": "^1.1.0",
     "wikidot-kit": "^0.7.0"
   },
   "devDependencies": {
