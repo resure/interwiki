@@ -41,3 +41,5 @@ public/dist/*
 .env
 build/**/*
 
+.idea
+

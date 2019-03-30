@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "micro -l tcp://127.0.0.1:3001",
-    "dev": "micro-dev",
-    "inspect": "node --inspect node_modules/.bin/micro-dev"
+    "start": "micro build -l tcp://127.0.0.1:3001",
+    "build": "tsc",
+    "dev": "tsc-watch --onSuccess 'micro build -l tcp://127.0.0.1:3001'",
+    "inspect": "node --inspect node_modules/.bin/micro-dev build",
+    "lint": "eslint app --ext='ts'"
   },
   "repository": {
     "type": "git",
@@ -23,10 +25,18 @@
     "dotenv": "^7.0.0",
     "micro": "^9.3.3",
     "micro-query": "^0.3.0",
-    "scpdb-ch-logger": "^1.1.0",
+    "scpdb-logger": "^3.1.1",
     "wikidot-kit": "^0.7.0"
   },
   "devDependencies": {
-    "micro-dev": "^3.0.0"
+    "micro-dev": "^3.0.0",
+    "@types/node": "^11.12.2",
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
+    "@typescript-eslint/parser": "^1.5.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "typescript": "^3.3.0",
+    "tsc-watch": "^2.0.0"
   }
 }

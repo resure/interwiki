@@ -1,21 +1,21 @@
 'use strict';
 
-const {sites, titlesByLang} = require('./config');
+import { sites, titlesByLang } from './config';
 
-function generateWikiLink(wikiName, pageName) {
-    const url = `${sites[wikiName].url}/${pageName}`;
-    const language = sites[wikiName].title;
-    return `<div class="interwiki__entry"><a href="${url}">${language}</a></div>`;
+function generateWikiLink(wikiName: string, pageName: string) {
+  const url = `${sites[wikiName].url}/${pageName}`;
+  const language = sites[wikiName].title;
+  return `<div class="interwiki__entry"><a href="${url}">${language}</a></div>`;
 }
 
-exports.render = function render(list, lang, pageName) {
-    if (!list.length) {
-        return '';
-    }
+export default function render(list: string[], lang: string, pageName: string) {
+  if (!list.length) {
+    return '';
+  }
 
-    const sortedList = list.sort((a, b) => (sites[a].name > sites[b].name ? 1 : -1));
+  const sortedList = list.sort((a, b) => (sites[a].name > sites[b].name ? 1 : -1));
 
-    return `
+  return `
 
 <!DOCTYPE html>
 <html>
@@ -88,4 +88,4 @@ exports.render = function render(list, lang, pageName) {
 </html>
 
     `.trim();
-};
+}
