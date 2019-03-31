@@ -68,6 +68,12 @@ export function init() {
   }
 }
 
+function exit() {
+  setTimeout(() => process.exit(0), 100);
+}
+process.on('SIGINT', exit);
+process.on('SIGTERM', exit);
+
 export function getWikiListByPageName(pageName: string): string[] {
   return pages[pageName] || [];
 }
