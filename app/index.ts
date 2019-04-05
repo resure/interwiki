@@ -23,8 +23,7 @@ module.exports = (req: IncomingMessage, res: ServerResponse) => {
     return '';
   }
 
-  const message = `wiki=${wiki} lang=${lang} page=${page}`;
-  log(message, {
+  log('', {
     type: 'request',
     addr: ip as string,
     client,
