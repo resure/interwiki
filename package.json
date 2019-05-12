@@ -12,7 +12,7 @@
     "prepublishOnly": "npm run build",
     "deploy:install": "sudo cp /var/scpdb/interwiki/current/deploy/interwiki.service /etc/systemd/system/scpdb-interwiki.service && sudo systemctl enable scpdb-interwiki",
     "deploy:restart": "sudo systemctl restart scpdb-interwiki",
-    "deploy": "np && scpdb@mars.scpdb.org 'cd /var/scpdb/interwiki && (npm upgrade scpdb-interwiki --latest || (npm i && npm upgrade scpdb-interwiki --latest)) && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'"
+    "deploy": "np && ssh mars.scpdb.org 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'"
   },
   "files": [
     "app",
