@@ -1,0 +1,15 @@
+[Unit]
+Description=SCPDB HTTP
+After=syslog.target network.target nginx.service
+
+[Service]
+User=scpdb
+EnvironmentFile=/var/scpdb/env
+WorkingDirectory=/var/scpdb/interwiki/current
+ExecStart=/usr/bin/node build
+Restart=always
+RestartSec=5
+SyslogIdentifier=scpdb-interwiki
+
+[Install]
+WantedBy=multi-user.target
