@@ -1,5 +1,5 @@
 [Unit]
-Description=SCPDB HTTP
+Description=SCPDB InterWiki
 After=syslog.target network.target nginx.service
 
 [Service]
