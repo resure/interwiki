@@ -8,12 +8,20 @@
     "build": "tsc",
     "dev": "tsc-watch --onSuccess 'micro build -l tcp://127.0.0.1:3001'",
     "inspect": "node --inspect node_modules/.bin/micro-dev build",
-    "lint": "eslint app --ext='ts'",
+    "lint": "eslint app -p-ext='ts'",
     "prepublishOnly": "npm run build",
     "deploy:install": "sudo cp /var/scpdb/interwiki/current/deploy/interwiki.service /etc/systemd/system/scpdb-interwiki.service && sudo systemctl enable scpdb-interwiki",
     "deploy:restart": "sudo systemctl restart scpdb-interwiki",
     "deploy": "np && scpdb@mars.scpdb.org 'cd /var/scpdb/interwiki && (npm upgrade scpdb-interwiki --latest || (npm i && npm upgrade scpdb-interwiki --latest)) && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'"
   },
+  "files": [
+    "app",
+    "build",
+    "deploy",
+    "public",
+    "tsconfig.json",
+    ".npmrc"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/scpdb/interwiki.git"
