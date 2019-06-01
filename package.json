@@ -37,7 +37,7 @@
     "micro": "^9.3.3",
     "micro-query": "^0.3.0",
     "scpdb-logger": "^3.2.2",
-    "wikidot-kit": "^0.7.0"
+    "wikidot-kit": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^11.13.0",
