@@ -27,7 +27,13 @@ async function updatePagesRegistry() {
   try {
     log('Updating page lists');
 
-    const requests = Object.keys(sites).map(siteName => wk.fetchPagesList({ wiki: siteName }));
+    const requests = Object.keys(sites).map(siteName => {
+      return wk.fetchPagesList({ wiki: siteName })
+        .catch((error: Error) => {
+          console.error(`Error during pages list fetching (wiki: "${siteName}")`, error);
+          return [];
+        })
+    });
 
     const pageLists: Array<Array<string>> = await Promise.all(requests);
 
