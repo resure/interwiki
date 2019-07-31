@@ -63,7 +63,7 @@ export const sites: {[name: string]: InterWikiBranch} = {
     name: 'Chinese',
     url: 'http://scp-wiki-cn.wikidot.com',
   },
-  'scp-kr': {
+  'scpko': {
     title: '한국어',
     name: 'Korean',
     url: 'http://ko.scp-wiki.net',
