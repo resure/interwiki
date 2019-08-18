@@ -1,7 +1,7 @@
 import log from 'scpdb-logger';
 import { sites } from './config';
 
-const WikidotKit = require('wikidot-kit');
+import WikidotKit from 'wikidot-kit';
 const fs = require('fs');
 
 const cacheFilePath = process.env.INTERWIKI_FILE_CACHE_PATH;
@@ -10,9 +10,7 @@ if (!process.env.WIKIDOT_API_TOKEN) {
   throw new Error('No WIKIDOT_API_TOKEN found, exiting');
 }
 
-const wk = new WikidotKit({
-  token: process.env.WIKIDOT_API_TOKEN,
-});
+const wk = new WikidotKit(process.env.WIKIDOT_API_TOKEN);
 
 let pages: { [name: string]: string[] } = {};
 if (cacheFilePath) {
@@ -28,7 +26,7 @@ async function updatePagesRegistry() {
     log('Updating page lists');
 
     const requests = Object.keys(sites).map(siteName => {
-      return wk.fetchPagesList({ wiki: siteName })
+      return wk.fetchPagesList(siteName)
         .catch((error: Error) => {
           console.error(`Error during pages list fetching (wiki: "${siteName}")`, error);
           return [];
