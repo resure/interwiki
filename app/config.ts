@@ -23,6 +23,11 @@ interface InterWikiBranch {
 }
 
 export const sites: {[name: string]: InterWikiBranch} = {
+  'scp-int': {
+    title: 'International',
+    name: 'International',
+    url: 'http://scp-int.wikidot.com'
+  },
   'scp-ru': {
     title: 'Русский',
     name: 'Russian',

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "micro build -l tcp://127.0.0.1:3001",
     "build": "tsc",
-    "dev": "tsc-watch --onSuccess 'micro build -l tcp://127.0.0.1:3001'",
+    "dev": "tsc-watch --onSuccess 'micro build -l tcp://0.0.0.0:3001'",
     "inspect": "node --inspect node_modules/.bin/micro-dev build",
     "lint": "eslint app -p-ext='ts'",
     "prepublishOnly": "npm run build",
@@ -37,10 +37,10 @@
     "micro": "^9.3.3",
     "micro-query": "^0.3.0",
     "scpdb-logger": "^3.2.2",
-    "wikidot-kit": "^0.7.0"
+    "wikidot-kit": "^2.0.0"
   },
   "devDependencies": {
-    "@types/node": "^11.13.0",
+    "@types/node": "^11.13.19",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
     "eslint": "^5.3.0",
