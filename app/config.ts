@@ -95,7 +95,7 @@ export const sites: {[name: string]: InterWikiBranch} = {
     url: 'http://scp-pt-br.wikidot.com',
   },
   'scp-cs': {
-    title: 'Český',
+    title: 'Česky',
     name: 'Czech',
     url: 'http://scp-cs.wikidot.com',
   },
