@@ -14,6 +14,7 @@ export const titlesByLang: {[lang: string]: string} = {
   fr: 'Dans d’autres langues',
   ua: 'Іншими мовами',
   pt_br: 'Em outros idiomas',
+  cs: 'V jiných jazycích',
 };
 
 interface InterWikiBranch {
@@ -92,5 +93,10 @@ export const sites: {[name: string]: InterWikiBranch} = {
     title: 'Português',
     name: 'Portugese',
     url: 'http://scp-pt-br.wikidot.com',
+  },
+  'scp-cs': {
+    title: 'Český',
+    name: 'Czech',
+    url: 'http://scp-cs.wikidot.com',
   },
 };
