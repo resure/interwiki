@@ -12,8 +12,8 @@
     "prepublishOnly": "npm run build",
     "deploy:install": "sudo cp /var/scpdb/interwiki/current/deploy/interwiki.service /etc/systemd/system/interwiki.service && sudo systemctl enable interwiki",
     "deploy:restart": "sudo systemctl restart interwiki",
-    "deploy:november": "ssh $SCPDB_SERVER_NOVEMBER 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'",
-    "deploy:december": "ssh $SCPDB_SERVER_DECEMBER 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'",
+    "deploy:november": "ssh scpdb@$SCPDB_SERVER_NOVEMBER 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'",
+    "deploy:december": "ssh scpdb@$SCPDB_SERVER_DECEMBER 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'",
     "deploy": "np && npm run deploy:november && npm run deploy:december"
   },
   "files": [
