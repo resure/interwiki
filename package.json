@@ -10,9 +10,11 @@
     "inspect": "node --inspect node_modules/.bin/micro-dev build",
     "lint": "eslint app -p-ext='ts'",
     "prepublishOnly": "npm run build",
-    "deploy:install": "sudo cp /var/scpdb/interwiki/current/deploy/interwiki.service /etc/systemd/system/scpdb-interwiki.service && sudo systemctl enable scpdb-interwiki",
-    "deploy:restart": "sudo systemctl restart scpdb-interwiki",
-    "deploy": "np && ssh linode-1.scpdb.org 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'"
+    "deploy:install": "sudo cp /var/scpdb/interwiki/current/deploy/interwiki.service /etc/systemd/system/interwiki.service && sudo systemctl enable interwiki",
+    "deploy:restart": "sudo systemctl restart interwiki",
+    "deploy:november": "ssh $SCPDB_SERVER_NOVEMBER 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'",
+    "deploy:december": "ssh $SCPDB_SERVER_DECEMBER 'cd /var/scpdb/interwiki && npm upgrade scpdb-interwiki --latest && npm run symlink && cd current && npm run deploy:install && npm run deploy:restart'",
+    "deploy": "np && npm run deploy:november && npm run deploy:december"
   },
   "files": [
     "app",
@@ -37,10 +39,10 @@
     "micro": "^9.3.3",
     "micro-query": "^0.3.0",
     "scpdb-logger": "^3.2.2",
-    "wikidot-kit": "^2.0.0"
+    "wikidot-kit": "^2.0.1"
   },
   "devDependencies": {
-    "@types/node": "^11.13.19",
+    "@types/node": "^11.15.3",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
     "eslint": "^5.3.0",
@@ -48,6 +50,6 @@
     "eslint-plugin-import": "^2.16.0",
     "micro-dev": "^3.0.0",
     "tsc-watch": "^2.0.0",
-    "typescript": "^3.4.2"
+    "typescript": "^3.7.2"
   }
 }

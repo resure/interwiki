@@ -29,7 +29,7 @@ module.exports = (req: IncomingMessage, res: ServerResponse) => {
     client,
     s1: wiki,
     s2: lang,
-    s3: page
+    s3: page,
   });
 
   return renderTemplate(wiki, page, lang);

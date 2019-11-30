@@ -1,5 +1,5 @@
 [Unit]
-Description=SCPDB InterWiki
+Description=Interwiki
 After=syslog.target network.target nginx.service
 
 [Service]
@@ -9,7 +9,7 @@ WorkingDirectory=/var/scpdb/interwiki/current
 ExecStart=/usr/bin/npm start
 Restart=always
 RestartSec=5
-SyslogIdentifier=scpdb-interwiki
+SyslogIdentifier=interwiki
 
 [Install]
 WantedBy=multi-user.target

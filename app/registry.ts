@@ -1,7 +1,7 @@
 import log from 'scpdb-logger';
+import WikidotKit from 'wikidot-kit';
 import { sites } from './config';
 
-import WikidotKit from 'wikidot-kit';
 const fs = require('fs');
 
 const cacheFilePath = process.env.INTERWIKI_FILE_CACHE_PATH;
@@ -25,13 +25,11 @@ async function updatePagesRegistry() {
   try {
     log('Updating page lists');
 
-    const requests = Object.keys(sites).map(siteName => {
-      return wk.fetchPagesList(siteName)
-        .catch((error: Error) => {
-          console.error(`Error during pages list fetching (wiki: "${siteName}")`, error);
-          return [];
-        })
-    });
+    const requests = Object.keys(sites).map(siteName => wk.fetchPagesList(siteName)
+      .catch((error: Error) => {
+        console.error(`Error during pages list fetching (wiki: "${siteName}")`, error);
+        return [];
+      }));
 
     const pageLists: Array<Array<string>> = await Promise.all(requests);
 
