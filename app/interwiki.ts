@@ -1,11 +1,11 @@
 import { init as initRegistry, getWikiListByPageName } from './registry';
-import render from './template';
+import render, { Styles } from './template';
 
 export function init() {
   initRegistry();
 }
 
-export function renderTemplate(wiki: string, page: string, lang: string) {
+export function renderTemplate(wiki: string, page: string, lang: string, styles: Styles) {
   const preparedPageName = page
     .replace('forum:category', 'forum:start')
     .replace('forum:thread', 'forum:start')
@@ -14,5 +14,5 @@ export function renderTemplate(wiki: string, page: string, lang: string) {
   const list = getWikiListByPageName(preparedPageName)
     .filter(pageWiki => pageWiki !== wiki);
 
-  return render(list, lang, preparedPageName);
+  return render(list, lang, preparedPageName, styles);
 }
