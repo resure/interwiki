@@ -15,7 +15,7 @@ export const titlesByLang: {[lang: string]: string} = {
   ua: 'Іншими мовами',
   pt_br: 'Em outros idiomas',
   cs: 'V jiných jazycích',
-  zh_tr: '他國語言版本',
+  zh_tr: '其他語言',
 };
 
 interface InterWikiBranch {
