@@ -3,6 +3,7 @@ import log from 'scpdb-logger';
 
 require('dotenv').config();
 import { init, renderTemplate } from './interwiki';
+import {Layout} from './template';
 
 const query = require('micro-query');
 
@@ -28,12 +29,18 @@ module.exports = (req: IncomingMessage, res: ServerResponse) => {
   const lang = params.lang || 'en';
   const page = (params.page || '').replace(/^_default:/, '');
 
+  let layout: Layout = 'standard';
+  if (params.doNotUseExperimentalLayout === 'two-column') {
+    layout = 'two-column';
+  }
+
   const styles = {
     linkColor: parseColor(params.linkColor),
     titleColor: parseColor(params.titleColor),
     borderColor: parseColor(params.borderColor),
     bgColor: parseColor(params.bgColor),
     hideBorder: params.hideBorder === '1',
+    layout,
   };
 
   if (!page || !PAGE_NAME_REGEXP.test(page)) {

@@ -2,12 +2,15 @@
 
 import { sites, titlesByLang } from './config';
 
+export type Layout = 'standard' | 'two-column';
+
 export interface Styles {
   linkColor: string;
   titleColor: string;
   borderColor: string;
   bgColor: string;
   hideBorder: boolean;
+  layout: Layout;
 }
 
 function generateWikiLink(wikiName: string, pageName: string) {
@@ -39,6 +42,18 @@ export default function render(list: string[], lang: string, pageName: string, s
           border-radius: 10px;
           box-shadow: 0 2px 6px rgba(102,0,0,.5);
     `.trim();
+  }
+
+  function getEntriesStyles(layout: Layout) {
+    if (layout === 'two-column') {
+      return `
+        display: grid;
+        grid-template-columns: 47% 40%;
+        font-size: 0.95em;
+        margin-top: 7px;
+      `.trim();
+    }
+    return '';
   }
 
   return `
@@ -73,6 +88,9 @@ export default function render(list: string[], lang: string, pageName: string, s
         font-size: 8pt;
         font-weight: bold;
     }
+    .interwiki__entries {
+      ${getEntriesStyles(styles.layout)}
+    }
     .interwiki__entry {
         position: relative;
         margin: 2px 0;
@@ -104,7 +122,9 @@ export default function render(list: string[], lang: string, pageName: string, s
 <body>
     <div class="interwiki">
         <div class="interwiki__title">${titlesByLang[lang] || 'Unknown language'}</div>
-        ${sortedList.map(wikiName => generateWikiLink(wikiName, pageName)).join('\n')}
+        ${styles.layout === 'two-column' ? '<div class="interwiki__entries">' : ''}
+          ${sortedList.map(wikiName => generateWikiLink(wikiName, pageName)).join('\n')}
+        ${styles.layout === 'two-column' ? '</div>' : ''}
     </div>
     <!-- SCP Foundation Russia Networks -->
 </body>
