@@ -5,6 +5,7 @@ import { sites, titlesByLang } from './config';
 export interface Styles {
   linkColor: string;
   titleColor: string;
+  borderColor: string;
   bgColor: string;
   hideBorder: boolean;
 }
@@ -15,17 +16,6 @@ function generateWikiLink(wikiName: string, pageName: string) {
   return `<div class="interwiki__entry"><a href="${url}">${language}</a></div>`;
 }
 
-function getBorderStyles(hideBorder: boolean) {
-  if (hideBorder) {
-    return '';
-  }
-  return `
-        padding: 10px;
-        border: 1px solid #660000;
-        border-radius: 10px;
-        box-shadow: 0 2px 6px rgba(102,0,0,.5);
-  `.trim();
-}
 
 export default function render(list: string[], lang: string, pageName: string, styles: Styles) {
   if (!list.length) {
@@ -36,7 +26,20 @@ export default function render(list: string[], lang: string, pageName: string, s
 
   const bgColor = styles.bgColor ? `#${styles.bgColor}` : '#fff';
   const titleColor = styles.titleColor ? `#${styles.titleColor}` : '#600';
+  const borderColor = styles.borderColor ? `#${styles.borderColor}` : '#600';
   const linkColor = styles.linkColor ? `#${styles.linkColor}` : '#b01';
+
+  function getBorderStyles(hideBorder: boolean) {
+    if (hideBorder) {
+      return '';
+    }
+    return `
+          padding: 10px;
+          border: 1px solid ${borderColor};
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(102,0,0,.5);
+    `.trim();
+  }
 
   return `
 

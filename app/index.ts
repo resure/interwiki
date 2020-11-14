@@ -13,7 +13,7 @@ init();
 const COLOR_REGEXP = /^[0-9abcdef]{6}$/;
 function parseColor(input: string = ''): string {
   const color = input.toLowerCase();
-  if (COLOR_REGEXP.test(input)) {
+  if (color === 'transparent' || COLOR_REGEXP.test(input)) {
     return color;
   }
   return '';
@@ -31,6 +31,7 @@ module.exports = (req: IncomingMessage, res: ServerResponse) => {
   const styles = {
     linkColor: parseColor(params.linkColor),
     titleColor: parseColor(params.titleColor),
+    borderColor: parseColor(params.borderColor),
     bgColor: parseColor(params.bgColor),
     hideBorder: params.hideBorder === '1',
   };
