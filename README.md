@@ -48,7 +48,7 @@ For the full list of supported wikis and languages see [`config.ts`](https://git
 Visual style of the InterWiki block is matching default theme for SCP wiki sites. However, we support some options for customization:
 
 - `hideBorder` - set to `true` to hide borders altogether with inner padding and shadow around block
-- `titleColor`, `linkColor`, `bgColor` - pass hex color values (6 symbols, without `#` in the begging, like `ce44cd` or `4444dd`) to override default colors for title, links and background accordingly
+- `titleColor`, `borderColor`, `linkColor`, `bgColor` - pass hex color values (6 symbols, without `#` in the begging, like `ce44cd` or `4444dd`) to override default colors for title, border, links and background accordingly
 
 Examples of customization:
 
